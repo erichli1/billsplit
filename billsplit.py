@@ -47,6 +47,8 @@ def cleanArray(array):
         # Add the current cleaned entry to the entries list
         entries.append(tempEntry)
     
+    print(array)
+    
     # Add the metadata of people and total cost to the beginning of the entries list
     entries.insert(0, peopleList)
     entries.insert(1, total)
@@ -60,12 +62,16 @@ def splitBillOnCleanedArray(array):
 
     charges = dict.fromkeys(people, 0)
 
+    print(array)
+
     subtotal = 0
     for entry in array[2:]:
         # print(array)
         cost = entry[0]
         subtotal = subtotal + cost
         numPeopleInEntry = len(entry[1:])
+
+        # print(entry)
 
         perPersonCost = cost/numPeopleInEntry
 
@@ -84,6 +90,9 @@ def splitBillOnCleanedArray(array):
     else:
         for person in charges:
             charges[person] = '${:,.2f}'.format((charges[person] / subtotal) * total)
+    
+    charges['total'] = '${:,.2f}'.format(total)
+    charges['subtotal'] = '${:,.2f}'.format(subtotal)
 
     return charges
 
