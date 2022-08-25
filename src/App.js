@@ -56,6 +56,12 @@ function App() {
     return <Row>
       <Col>
         <Form.Group>
+          <Form.Label>Item (optional)</Form.Label>
+          <Form.Control required type="text" />
+        </Form.Group>
+      </Col>
+      <Col>
+        <Form.Group>
           <Form.Label>Item cost<span className="red"> *</span></Form.Label>
           <Form.Control required type="number" step="0.01" placeholder="XX.YY" name={'item-' + itemList.length} />
         </Form.Group>
