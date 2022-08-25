@@ -71,7 +71,7 @@ function Results(props) {
 
   // Warning for subtotal and total mistake
   if (subtotal > total) {
-    warnings[1][0] = true;
+    warnings[0][0] = true;
   }
 
   const TotalByPerson = props => <div>{props.person}: {props.total}</div>;
