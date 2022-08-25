@@ -63,14 +63,17 @@ function Results(props) {
   }
 
   const calculatedTotal = totalsByPerson.reduce((a,b) => a + b, 0);
-  if (calculatedTotal.toFixed(2) != total.toFixed(2)) {
+  if (roundToTwo(calculatedTotal) != roundToTwo(total)) {
     warnings[3][0] = true;
   }
 
   totalsByPerson = totalsByPerson.map((element, index) => {return '$' + element.toFixed(2)})
 
+  console.log(roundToTwo(subtotal));
+  console.log(roundToTwo(total));
+
   // Warning for subtotal and total mistake
-  if (subtotal.toFixed(2) > total.toFixed(2)) {
+  if (roundToTwo(subtotal) > roundToTwo(total)) {
     warnings[0][0] = true;
   }
   // Warning for duplicate names
@@ -101,6 +104,11 @@ function Results(props) {
 // Check if duplicates in array (from https://stackoverflow.com/a/7376645)
 function hasDuplicates(array) {
   return (new Set(array)).size !== array.length;
+}
+
+// Round number to two decimals (from https://stackoverflow.com/a/11832950)
+function roundToTwo(num) {
+  return Math.round((num + Number.EPSILON) * 100) / 100
 }
 
 export default Results;
