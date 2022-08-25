@@ -62,7 +62,7 @@ function Results(props) {
     totalsByPerson = subtotalArrayByPerson
   } else {
     for (let i = 0; i < totalsByPerson.length; i++) {
-      totalsByPerson[i] = percentageArrayByPerson[i] * total;
+      totalsByPerson[i] = '$' + (percentageArrayByPerson[i] * total).toFixed(2);
     }
   }
 
