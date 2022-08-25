@@ -95,6 +95,7 @@ function App() {
     }
     
     setSpendingArray(convertedItemizedCosts);
+    setForm1Visible(false);
     setResultsVisible(true);
   }
   
