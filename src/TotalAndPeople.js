@@ -9,7 +9,7 @@ function TotalAndPeople(props) {
       <h3>Total and people</h3>
       <Form onSubmit={props.handleSubmit}>
         <Form.Group className="mb-3">
-          <Form.Label>How much is the total cost?</Form.Label>
+          <Form.Label>How much is the total cost? (including tax and tip)</Form.Label>
           <Form.Control required type="number" step="0.01" placeholder="XX.YY" name="total" />
         </Form.Group>
         <Form.Group className="mb-3">
