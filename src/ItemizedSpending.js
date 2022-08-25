@@ -8,7 +8,15 @@ function ItemizedSpending(props) {
   return (
     <div>
       <h3>Itemized spending</h3>
-      <p>Please click "Add item" to add a new line item</p>
+      <p>Please click "Add item" to add a new line item.</p>
+      <ul>
+        <li>
+          Item cost should include the cost of the item (no tax or tip).
+        </li>
+        <li>
+          People should include all people who split the item.
+        </li>
+      </ul>
       <Form onSubmit={props.handleSubmit}>
         <Container>
           {props.itemList}

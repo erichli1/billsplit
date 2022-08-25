@@ -54,11 +54,19 @@ function App() {
 
   const Item = () => {
     return <Row>
-      <Col><Form.Control required type="number" step="0.01" placeholder="XX.YY" name={'item-' + itemList.length} /></Col>
       <Col>
-        {peopleList.map((name) => (
-          <Form.Check label={name} id={'item-' + itemList.length + '-' + name} key={'item-' + itemList.length + '-' + name} name={'item-' + itemList.length + '-' + name}/>
-        ))}
+        <Form.Group>
+          <Form.Label>Item cost<span className="red"> *</span></Form.Label>
+          <Form.Control required type="number" step="0.01" placeholder="XX.YY" name={'item-' + itemList.length} />
+        </Form.Group>
+      </Col>
+      <Col>
+        <Form.Group>
+          <Form.Label>People<span className="red"> *</span></Form.Label>
+          {peopleList.map((name) => (
+            <Form.Check label={name} id={'item-' + itemList.length + '-' + name} key={'item-' + itemList.length + '-' + name} name={'item-' + itemList.length + '-' + name}/>
+          ))}
+        </Form.Group>
       </Col>
     </Row>
   }
