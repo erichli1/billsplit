@@ -8,10 +8,10 @@ function TextInput(props) {
   return (
     <div>
       <br/>
-      <h3>Total and people</h3>
+      <h3>Text Input</h3>
       <Form onSubmit={props.handleSubmit}>
         <Form.Group className="mb-3">
-          <Form.Label>Text input below:</Form.Label>
+          <Form.Label>Instead of using the form, feel free to input all the info directly:</Form.Label>
           <br/>
           <Form.Text className="text-muted">
             <p>

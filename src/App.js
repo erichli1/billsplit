@@ -48,6 +48,7 @@ function App() {
     }
 
     setForm2Visible(false);
+    setTextInputVisible(true);
     setResultsVisible(true);
   }
 
@@ -78,7 +79,12 @@ function App() {
     const localPeopleList = splitStringBySpacesOrCommas(textInputSubstrings[1]).sort()
     setPeopleList(localPeopleList);
 
-    const rawItemizedCosts = trimStringArray(textInputSubstrings[2].split(";"));
+    let localItemizedCostsString = textInputSubstrings[2];
+    if (localItemizedCostsString[localItemizedCostsString.length - 1] == ';') {
+      localItemizedCostsString = localItemizedCostsString.substring(0,localItemizedCostsString.length-1);
+    }
+
+    const rawItemizedCosts = trimStringArray(localItemizedCostsString.split(";"));
     let convertedItemizedCosts = rawItemizedCosts.map((item) => {
       return splitStringBySpacesOrCommas(item);
     })
