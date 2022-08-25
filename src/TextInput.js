@@ -24,7 +24,7 @@ function TextInput(props) {
           <Form.Control required as="textarea" type="text" placeholder="TOTAL // PEOPLE // ITEMIZED COSTS" name="text-input" />
         </Form.Group>
         <Button variant="primary" type="submit">
-          Submit text input
+          Show me the split!
         </Button>
       </Form>
     </div>

@@ -14,7 +14,7 @@ function ItemizedSpending(props) {
         </Container>
         <Button variant="secondary" onClick={props.addItem}>Add item</Button>
         <Button variant="primary" type="submit">
-          Submit itemized spending
+          Show me the split!
         </Button>
       </Form>
     </div>

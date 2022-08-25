@@ -17,7 +17,7 @@ function TotalAndPeople(props) {
           <Form.Control required type="text" placeholder="Jane, Jack, etc." name="people" />
         </Form.Group>
         <Button variant="primary" type="submit">
-          Submit total and people
+          Move to itemized costs
         </Button>
       </Form>
     </div>
