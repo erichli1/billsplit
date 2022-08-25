@@ -45,6 +45,19 @@ function Results(props) {
   // Calculate totals by person
   var totalsByPerson = new Array(props.peopleList.length);
 
+  // Generate text input string for debugging
+  let textInput = '';
+  textInput = textInput.concat(total, ' // ', props.peopleList.toString(), ' // ');
+  for (let i = 0; i < props.spendingArray.length; i++) {
+    textInput = textInput.concat(props.spendingArray[i][0])
+    for (let j = 1; j < props.spendingArray[i].length; j++) {
+      textInput = textInput.concat(' ', props.peopleList[props.spendingArray[i][j]]);
+    }
+    textInput = textInput.concat('; ');
+  }
+
+  textInput = textInput.substring(0,textInput.length-1)
+
   if (subtotal == total) {
     totalsByPerson = subtotalArrayByPerson
   } else {
@@ -73,6 +86,9 @@ function Results(props) {
           return <Warning key={index} warningText={warning[1]} />
         }
       })}
+      <br/>
+      <div>If you made a mistake, here is the text input that you can use to manually edit:</div>
+      <div>{textInput}</div>
     </div>
   );
 }

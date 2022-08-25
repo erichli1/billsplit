@@ -3,7 +3,7 @@ import './App.css';
 import TotalAndPeople from './TotalAndPeople';
 import ItemizedSpending from './ItemizedSpending';
 import Results from './Results';
-// import TextInput from './TextInput';
+import TextInput from './TextInput';
 
 import {useState} from 'react';
 import {Form, Row, Col} from 'react-bootstrap';
@@ -12,7 +12,7 @@ function App() {
   const [amount, setAmount] = useState();
   const [form1Visible, setForm1Visible] = useState(true);
   const [form2Visible, setForm2Visible] = useState(false);
-  // const [textInputVisible, setTextInputVisible] = useState(true);
+  const [textInputVisible, setTextInputVisible] = useState(true);
   const [resultsVisible, setResultsVisible] = useState(false);
   const [itemList, setItemList] = useState([]);
   const [peopleList, setPeopleList] = useState([]);
@@ -23,17 +23,12 @@ function App() {
 
     const peopleString = event.target.people.value;
 
-    if (peopleString.includes(", ")) {
-      setPeopleList(peopleString.split(", "));
-    } else if (peopleString.includes(",")) {
-      setPeopleList(peopleString.split(","));
-    } else {
-      setPeopleList(peopleString.split(" "));
-    }
+    setPeopleList(splitStringBySpacesOrCommas(peopleString).sort());
 
     setAmount(event.target.total.value);
 
     setForm1Visible(false);
+    setTextInputVisible(false);
     setForm2Visible(true);
   }
 
@@ -53,6 +48,7 @@ function App() {
     }
 
     setForm2Visible(false);
+    setTextInputVisible(true);
     setResultsVisible(true);
   }
 
@@ -71,13 +67,36 @@ function App() {
     setItemList(itemList.concat(<Item key={itemList.length} />));
   }
 
-  // const handleTextInputSubmit = event => {
-  //   // do nothing as of yet
-  // }
+  const handleTextInputSubmit = event => {
+    event.preventDefault();
 
-  // const amountTest = 105;
-  // const spendingArrayTest = [[30, 0, 1, 2],[30, 0, 1],[30,0]];
-  // const peopleListTest = ['Jack', 'Jill', 'Jane'];
+    const textInput = event.target['text-input'].value;
+
+    let textInputSubstrings = textInput.split('//');
+    textInputSubstrings = trimStringArray(textInputSubstrings);
+
+    setAmount(parseFloat(textInputSubstrings[0]));
+    const localPeopleList = splitStringBySpacesOrCommas(textInputSubstrings[1]).sort()
+    setPeopleList(localPeopleList);
+
+    let localItemizedCostsString = textInputSubstrings[2];
+    if (localItemizedCostsString[localItemizedCostsString.length - 1] == ';') {
+      localItemizedCostsString = localItemizedCostsString.substring(0,localItemizedCostsString.length-1);
+    }
+
+    const rawItemizedCosts = trimStringArray(localItemizedCostsString.split(";"));
+    let convertedItemizedCosts = rawItemizedCosts.map((item) => {
+      return splitStringBySpacesOrCommas(item);
+    })
+    for (let i = 0; i < convertedItemizedCosts.length; i++) {
+      for (let j = 1; j < convertedItemizedCosts[i].length; j++) {
+        convertedItemizedCosts[i][j] = localPeopleList.indexOf(convertedItemizedCosts[i][j]);
+      }
+    }
+    
+    setSpendingArray(convertedItemizedCosts);
+    setResultsVisible(true);
+  }
   
   return (
     <div className="App">
@@ -85,12 +104,26 @@ function App() {
         <h1>Bill split</h1>
         {form1Visible && <TotalAndPeople handleSubmit={handleForm1Submit}/>}
         {form2Visible && <ItemizedSpending handleSubmit={handleForm2Submit} itemList={itemList} addItem={addItem} />}
-        {/* {textInputVisible && <TextInput handleSubmit={handleTextInputSubmit} />} */}
+        {textInputVisible && <TextInput handleSubmit={handleTextInputSubmit} />}
         {resultsVisible && <Results spendingArray={spendingArray} peopleList={peopleList} total={amount} />}
         {/* {resultsVisible && <Results spendingArray={spendingArrayTest} peopleList={peopleListTest} total={amountTest} />} */}
       </div>
     </div>
   );
+}
+
+function trimStringArray(arr) {
+  return arr.map((string) => {return string.trim()});
+}
+
+function splitStringBySpacesOrCommas(string) {
+  if (string.includes(", ")) {
+    return string.split(", ");
+  } else if (string.includes(",")) {
+    return string.split(",");
+  } else {
+    return string.split(" ");
+  }
 }
 
 export default App;
