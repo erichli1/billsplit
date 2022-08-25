@@ -18,6 +18,7 @@ function ItemizedSpending(props) {
           Show me the split!
         </Button>
       </Form>
+      <br/>
     </div>
   );
 }

@@ -20,6 +20,7 @@ function TotalAndPeople(props) {
           Move to itemized costs
         </Button>
       </Form>
+      <br/>
     </div>
   );
 }
