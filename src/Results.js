@@ -59,17 +59,21 @@ function Results(props) {
   textInput = textInput.substring(0,textInput.length-1)
 
   if (subtotal == total) {
-    totalsByPerson = subtotalArrayByPerson
+    totalsByPerson = subtotalArrayByPerson;
   } else {
     for (let i = 0; i < totalsByPerson.length; i++) {
-      totalsByPerson[i] = '$' + (percentageArrayByPerson[i] * total).toFixed(2);
+      totalsByPerson[i] = percentageArrayByPerson[i] * total;
     }
   }
+
+  totalsByPerson = totalsByPerson.map((element) => {return '$' + element.toFixed(2)})
 
   // console.log('TOTALS');
   // console.log(totalsByPerson);
 
   // Warning for subtotal and total mistake
+  console.log(subtotal);
+  console.log(total);
   if (subtotal > total) {
     warnings[0][0] = true;
   }
