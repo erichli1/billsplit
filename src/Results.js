@@ -1,6 +1,6 @@
 import 'bootstrap/dist/css/bootstrap.css';
 import './App.css';
-import {Button, Container, Form, Row, Col} from 'react-bootstrap';
+import {Button, Container, Form, Row, Col, Alert} from 'react-bootstrap';
 
 function Results(props) {
   // console.log(props);
@@ -79,16 +79,17 @@ function Results(props) {
 
   return (
     <div>
-      <h4>Results</h4>
-      {totalsByPerson.map((totalByPerson, index) => <TotalByPerson key={index} person={props.peopleList[index]} total={totalByPerson} />)}
+      <Alert variant="primary">
+        <h4>Results</h4>
+        {totalsByPerson.map((totalByPerson, index) => <TotalByPerson key={index} person={props.peopleList[index]} total={totalByPerson} />)}
+      </Alert>
       {warnings.map((warning, index) => {
         if (warning[0]) {
-          return <Warning key={index} warningText={warning[1]} />
+          return <Alert variant="danger"><Warning key={index} warningText={warning[1]} /></Alert>
         }
       })}
-      <br/>
-      <div>If you made a mistake, here is the text input that you can use to manually edit:</div>
-      <div>{textInput}</div>
+      <p>If you made a mistake, here is the text input that you can use to manually edit:</p>
+      <p>{textInput}</p>
     </div>
   );
 }
