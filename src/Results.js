@@ -74,7 +74,7 @@ function Results(props) {
   // Warning for subtotal and total mistake
   console.log(subtotal);
   console.log(total);
-  if (subtotal > total) {
+  if (subtotal.toFixed(2) > total.toFixed(2)) {
     warnings[0][0] = true;
   }
 
