@@ -102,6 +102,14 @@ function App() {
     <div className="App">
       <div className="Main">
         <h1>Bill split</h1>
+        <p>
+          This is a bill splitting app made by <a href="https://erichli.com" target="_blank">Eric Li</a> with source code on <a href="https://github.com/erichli1/billsplit" target="_blank">GitHub</a>.
+        </p>
+        <p>
+          I'm guessing I'll be 95% of the user base, but if you're not me, then welcome!
+          I made this website to make it easy to split costs based on percentage of subtotal (rather than percentage of total).
+          This makes it easy to do itemized splitting where different people share different items, letting us split tax/tip evenly.
+        </p>
         {form1Visible && <TotalAndPeople handleSubmit={handleForm1Submit}/>}
         {form2Visible && <ItemizedSpending handleSubmit={handleForm2Submit} itemList={itemList} addItem={addItem} />}
         {textInputVisible && <TextInput handleSubmit={handleTextInputSubmit} />}
