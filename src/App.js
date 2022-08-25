@@ -3,7 +3,7 @@ import './App.css';
 import TotalAndPeople from './TotalAndPeople';
 import ItemizedSpending from './ItemizedSpending';
 import Results from './Results';
-import TextInput from './TextInput';
+// import TextInput from './TextInput';
 
 import {useState} from 'react';
 import {Form, Row, Col} from 'react-bootstrap';
@@ -12,7 +12,7 @@ function App() {
   const [amount, setAmount] = useState();
   const [form1Visible, setForm1Visible] = useState(true);
   const [form2Visible, setForm2Visible] = useState(false);
-  const [textInputVisible, setTextInputVisible] = useState(true);
+  // const [textInputVisible, setTextInputVisible] = useState(true);
   const [resultsVisible, setResultsVisible] = useState(false);
   const [itemList, setItemList] = useState([]);
   const [peopleList, setPeopleList] = useState([]);
@@ -71,9 +71,9 @@ function App() {
     setItemList(itemList.concat(<Item key={itemList.length} />));
   }
 
-  const handleTextInputSubmit = event => {
-    // do nothing as of yet
-  }
+  // const handleTextInputSubmit = event => {
+  //   // do nothing as of yet
+  // }
 
   // const amountTest = 105;
   // const spendingArrayTest = [[30, 0, 1, 2],[30, 0, 1],[30,0]];
@@ -85,7 +85,7 @@ function App() {
         <h1>Bill split</h1>
         {form1Visible && <TotalAndPeople handleSubmit={handleForm1Submit}/>}
         {form2Visible && <ItemizedSpending handleSubmit={handleForm2Submit} itemList={itemList} addItem={addItem} />}
-        {textInputVisible && <TextInput handleSubmit={handleTextInputSubmit} />}
+        {/* {textInputVisible && <TextInput handleSubmit={handleTextInputSubmit} />} */}
         {resultsVisible && <Results spendingArray={spendingArray} peopleList={peopleList} total={amount} />}
         {/* {resultsVisible && <Results spendingArray={spendingArrayTest} peopleList={peopleListTest} total={amountTest} />} */}
       </div>
