@@ -68,10 +68,7 @@ function Results(props) {
   }
 
   totalsByPerson = totalsByPerson.map((element, index) => {return '$' + element.toFixed(2)})
-
-  console.log(roundToTwo(subtotal));
-  console.log(roundToTwo(total));
-
+  
   // Warning for subtotal and total mistake
   if (roundToTwo(subtotal) > roundToTwo(total)) {
     warnings[0][0] = true;
@@ -108,7 +105,7 @@ function hasDuplicates(array) {
 
 // Round number to two decimals (from https://stackoverflow.com/a/11832950)
 function roundToTwo(num) {
-  return Math.round((num + Number.EPSILON) * 100) / 100
+  return Math.round(num * 100) / 100
 }
 
 export default Results;
