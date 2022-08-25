@@ -64,7 +64,7 @@ function App() {
   }
 
   const addItem = event => {
-    setItemList(itemList.concat(<Item key={itemList.length} />));
+    setItemList(itemList.concat(<div><Item key={itemList.length} /><hr/></div>));
   }
 
   const handleTextInputSubmit = event => {
