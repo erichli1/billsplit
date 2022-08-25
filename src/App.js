@@ -23,7 +23,7 @@ function App() {
 
     const peopleString = event.target.people.value;
 
-    setPeopleList(splitStringBySpacesOrCommas(peopleString).sort());
+    setPeopleList(splitStringBySpacesOrCommas(peopleString.trim()).sort());
 
     setAmount(event.target.total.value);
 
