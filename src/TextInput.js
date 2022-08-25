@@ -7,7 +7,6 @@ import Button from 'react-bootstrap/Button';
 function TextInput(props) {
   return (
     <div>
-      <br/>
       <h3>Text Input</h3>
       <Form onSubmit={props.handleSubmit}>
         <Form.Group className="mb-3">
@@ -24,9 +23,10 @@ function TextInput(props) {
           <Form.Control required as="textarea" type="text" placeholder="TOTAL // PEOPLE // ITEMIZED COSTS" name="text-input" />
         </Form.Group>
         <Button variant="primary" type="submit">
-          Submit text input
+          Show me the split!
         </Button>
       </Form>
+      <br/>
     </div>
   );
 }
