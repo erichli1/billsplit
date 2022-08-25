@@ -11,7 +11,7 @@ function ItemizedSpending(props) {
       <p>Please click "Add item" to add a new line item. If with a large party, this might be easiest by inputting all the items and passing the phone around.</p>
       <ul>
         <li>
-          Item is an optional name to help people differentiate between items.
+          Name is an optional item name to help people differentiate between items.
         </li>
         <li>
           Item cost should include the cost of the item (no tax or tip).

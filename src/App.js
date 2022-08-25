@@ -56,7 +56,7 @@ function App() {
     return <Row>
       <Col>
         <Form.Group>
-          <Form.Label>Item (optional)</Form.Label>
+          <Form.Label>Name</Form.Label>
           <Form.Control required type="text" />
         </Form.Group>
       </Col>
