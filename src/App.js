@@ -8,6 +8,10 @@ import TextInput from './TextInput';
 import {useState} from 'react';
 import {Form, Row, Col} from 'react-bootstrap';
 
+import ReactGA from 'react-ga';
+ReactGA.initialize('G-RF7VYYJMCS');
+ReactGA.pageview(window.location.pathname + window.location.search);
+
 function App() {
   const [amount, setAmount] = useState();
   const [form1Visible, setForm1Visible] = useState(true);
