@@ -1,6 +1,6 @@
 import 'bootstrap/dist/css/bootstrap.css';
 import './App.css';
-import {Button, Container, Form, Row, Col, Alert} from 'react-bootstrap';
+import { Alert } from 'react-bootstrap';
 
 function Results(props) {
   // console.log(props);
@@ -23,7 +23,7 @@ function Results(props) {
     // console.log(totalCostOfItem);
     subtotal += parseFloat(totalCostOfItem);
     let totalPeoplePayingItem = props.spendingArray[i].length - 1;
-    if (totalPeoplePayingItem == 0) {
+    if (totalPeoplePayingItem === 0) {
       warnings[1][0] = true;
     }
     let totalCostOfItemByPerson = totalCostOfItem / totalPeoplePayingItem;
@@ -54,7 +54,7 @@ function Results(props) {
 
   textInput = textInput.substring(0,textInput.length-1)
 
-  if (subtotal == total) {
+  if (subtotal === total) {
     totalsByPerson = subtotalArrayByPerson;
   } else {
     for (let i = 0; i < totalsByPerson.length; i++) {
@@ -63,7 +63,7 @@ function Results(props) {
   }
 
   const calculatedTotal = totalsByPerson.reduce((a,b) => a + b, 0);
-  if (roundToTwo(calculatedTotal) != roundToTwo(total)) {
+  if (roundToTwo(calculatedTotal) !== roundToTwo(total)) {
     warnings[3][0] = true;
   }
 
@@ -90,6 +90,8 @@ function Results(props) {
       {warnings.map((warning, index) => {
         if (warning[0]) {
           return <Alert variant="danger"><Warning key={index} warningText={warning[1]} /></Alert>
+        } else {
+          return <></>
         }
       })}
       <p>If you made a mistake, here is the text input that you can use to manually edit:</p>

@@ -40,7 +40,7 @@ function App() {
     event.preventDefault();
 
     for(let i = 0; i < itemList.length; i++) {
-      let tempArray = new Array();
+      let tempArray = [];
       tempArray.push(event.target['item-' + i].value);
       for(let j = 0; j < peopleList.length; j++) {
         if(event.target['item-' + i + '-' + peopleList[j]].checked) {
@@ -98,7 +98,7 @@ function App() {
     setPeopleList(localPeopleList);
 
     let localItemizedCostsString = textInputSubstrings[2];
-    if (localItemizedCostsString[localItemizedCostsString.length - 1] == ';') {
+    if (localItemizedCostsString[localItemizedCostsString.length - 1] === ';') {
       localItemizedCostsString = localItemizedCostsString.substring(0,localItemizedCostsString.length-1);
     }
 
@@ -122,7 +122,7 @@ function App() {
       <div className="Main">
         <h1>Bill split</h1>
         <p>
-          This is a bill splitting app made by <a href="https://erichli.com" target="_blank">Eric Li</a> with source code on <a href="https://github.com/erichli1/billsplit" target="_blank">GitHub</a>.
+          This is a bill splitting app made by <a href="https://erichli.com" target="_blank" rel="noreferrer">Eric Li</a> with source code on <a href="https://github.com/erichli1/billsplit" target="_blank" rel="noreferrer">GitHub</a>.
         </p>
         <p>
           I'm guessing I'll be 95% of the user activity, but if you're not me, then welcome!
