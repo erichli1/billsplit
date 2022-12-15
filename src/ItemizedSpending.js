@@ -3,8 +3,6 @@ import './App.css';
 import {Button, Container, Form} from 'react-bootstrap';
 
 function ItemizedSpending(props) {
-  var temp = ['Jane', 'Jack', 'Joe']
-
   return (
     <div>
       <h3>Itemized spending</h3>
