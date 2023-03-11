@@ -14,7 +14,7 @@ function TextInput(props) {
           <br/>
           <Form.Text className="text-muted">
             <p>
-              Total as number (including tax and tip) // People as list // Itemized costs with costs then names (semicolon separated)
+              Total as number (including tax and tip) // People as list // Itemized costs with costs then names (semicolon separated). Note that you can use [everybody] to indicate that every person is involved in the item.
             </p>
             <p>
               123.45 // Jack Joe Jane // 50 Jack Joe; 40 Joe Jane; 30 Jane Jack
