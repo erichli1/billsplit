@@ -25,9 +25,10 @@ function App() {
   const handleForm1Submit = event => {
     event.preventDefault();
 
-    const peopleString = event.target.people.value;
+    // remove extra spaces, make lowercase, split by spaces/commas into array, sort
+    const peopleString = splitStringBySpacesOrCommas(event.target.people.value.trim().toLowerCase()).sort();
 
-    setPeopleList(splitStringBySpacesOrCommas(peopleString.trim()).sort());
+    setPeopleList(peopleString);
 
     setAmount(event.target.total.value);
 
@@ -88,13 +89,14 @@ function App() {
   const handleTextInputSubmit = event => {
     event.preventDefault();
 
-    const textInput = event.target['text-input'].value;
+    const textInput = event.target['text-input'].value.toLowerCase();
 
     let textInputSubstrings = textInput.split('//');
     textInputSubstrings = trimStringArray(textInputSubstrings);
 
     setAmount(parseFloat(textInputSubstrings[0]));
-    const localPeopleList = splitStringBySpacesOrCommas(textInputSubstrings[1]).sort()
+    let localPeopleListWithPotentialDuplicates = splitStringBySpacesOrCommas(textInputSubstrings[1]).sort()
+    let localPeopleList = [...new Set(localPeopleListWithPotentialDuplicates.map((element) => element))];
     setPeopleList(localPeopleList);
 
     let localItemizedCostsString = textInputSubstrings[2];
@@ -103,8 +105,8 @@ function App() {
     }
 
     const rawItemizedCosts = trimStringArray(localItemizedCostsString.split(";"));
-    let convertedItemizedCosts = rawItemizedCosts.map((item) => {
-      return splitStringBySpacesOrCommas(item);
+    var convertedItemizedCosts = rawItemizedCosts.map((item) => {
+      return splitStringBySpacesOrCommas(item.replace('[everyone]', localPeopleList.join(' ')));
     })
     for (let i = 0; i < convertedItemizedCosts.length; i++) {
       for (let j = 1; j < convertedItemizedCosts[i].length; j++) {
