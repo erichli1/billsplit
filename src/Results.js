@@ -85,6 +85,7 @@ function Results(props) {
     <div>
       <Alert variant="primary">
         <h4>Results</h4>
+        <div style={{fontWeight: "bold"}}>subtotal: ${subtotal.toFixed(2)}</div>
         {totalsByPerson.map((totalByPerson, index) => <TotalByPerson key={index} person={props.peopleList[index]} total={totalByPerson} />)}
       </Alert>
       {warnings.map((warning, index) => {
