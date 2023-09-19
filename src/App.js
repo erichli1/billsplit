@@ -106,7 +106,7 @@ function App() {
 
     const rawItemizedCosts = trimStringArray(localItemizedCostsString.split(";"));
     var convertedItemizedCosts = rawItemizedCosts.map((item) => {
-      return splitStringBySpacesOrCommas(item.replace('[everyone]', localPeopleList.join(' ')));
+      return splitStringBySpacesOrCommas(item.replace('[everybody]', localPeopleList.join(' ')));
     })
     for (let i = 0; i < convertedItemizedCosts.length; i++) {
       for (let j = 1; j < convertedItemizedCosts[i].length; j++) {
